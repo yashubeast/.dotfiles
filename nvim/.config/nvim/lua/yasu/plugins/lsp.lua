@@ -8,6 +8,9 @@ return {
 	{
 		'williamboman/mason-lspconfig.nvim',
 		config = function()
+
+			local capabilities = require("blink.cmp").get_lsp_capabilities()
+
 			require('mason-lspconfig').setup {
 				ensure_installed = {
 					'lua_ls',
@@ -17,7 +20,7 @@ return {
 					'jsonls',
 					-- javascript, typescript
 					'ts_ls',
-					'eslint-lsp',
+					'eslint',
 					-- 'prisma-language-server',
 					-- docker, compose
 					'dockerls',
@@ -29,7 +32,15 @@ return {
 					'cssls',
 					-- 'tailwindcss',
 					'emmet_ls',
-				}
+				},
+
+				handlers = {
+					function(server)
+						require("lspconfig")[server].setup {
+							capabilities = capabilities,
+						}
+					end,
+				},
 			}
 		end,
 	},
@@ -38,18 +49,27 @@ return {
 		dependencies = {
 			'saghen/blink.cmp',
 		},
-		opts = {
-			servers = {
-				lua_ls = {},
-				marksman = {},
-				ts_ls = {},
-			}
-		},
-		config = function(_, opts)
-			local lspconfig = require('lspconfig')
-			for server, config in pairs(opts.servers) do
-				config.capabilities = require('blink.cmp').get_lsp_capabilities()
-				lspconfig[server].setup(config)
+		config = function()
+			-- opts = {
+			-- 	servers = {
+			-- 		lua_ls = {},
+			-- 		marksman = {},
+			-- 		jsonls = {},
+			-- 		tsserver = {},
+			-- 		eslint = {},
+			-- 		dockerls = {},
+			-- 		yamlls = {},
+			-- 		pyright = {},
+			-- 		html = {},
+			-- 		cssls = {},
+			-- 		emmet_ls = {},
+			-- 	}
+			-- },
+			-- config = function(_, opts)
+			-- 	local lspconfig = require('lspconfig')
+			-- 	for server, config in pairs(opts.servers) do
+			-- 		config.capabilities = require('blink.cmp').get_lsp_capabilities()
+			-- 		lspconfig[server].setup(config)
 
 
 			vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = '[P] view info' })
@@ -60,7 +80,7 @@ return {
 				severity_sort = true,
 				float = { border = 'rounded', source = 'if_many' },
 				underline = {
-						severity = { min = vim.diagnostic.severity.WARN }
+					severity = { min = vim.diagnostic.severity.WARN }
 				},
 				signs = false,
 				-- signs = vim.g.have_nerd_font and {
@@ -76,7 +96,7 @@ return {
 					spacing = 2,
 					severity = { min = vim.diagnostic.severity.WARN },
 					format = function(diagnostic)
-							return diagnostic.message
+						return diagnostic.message
 					end,
 					-- format = function(diagnostic)
 					-- 	local diagnostic_message = {
@@ -89,7 +109,6 @@ return {
 					-- end
 				}
 			}
-			end
 		end
 	}
 }
