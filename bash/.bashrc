@@ -11,6 +11,7 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias ff='fastfetch'
 alias nv='nvim'
+alias y='yazi'
 
 alias backup='~/.config/yasu/backup.sh'
 
