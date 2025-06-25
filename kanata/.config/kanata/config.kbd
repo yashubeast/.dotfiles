@@ -1,0 +1,14 @@
+(defsrc
+	ralt
+	caps h j k l
+)
+
+(deflayer base
+	(layer-toggle nav)
+	esc h j k l
+)
+
+(deflayer nav
+	_
+	lctl left down up right
+)
