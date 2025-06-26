@@ -24,6 +24,7 @@ pj() {
 	case "$1" in
 		d) cd /mnt/d ;;
 		nvim) cd ~/.config/nvim ;;
+		obs) cd /mnt/d/yashu/apps/obsidian/obsidian-vault/ ;;
 		awm) cd ~/.config/awesome ;;
 		awmt) cd ~/.config/awesome/theme ;;
 	esac

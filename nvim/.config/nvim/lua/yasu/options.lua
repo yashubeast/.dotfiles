@@ -1,36 +1,41 @@
+opt = vim.o
+glo = vim.g
+
 -- vim.g.md_heading_bg = 'transparent'
-vim.g.obsidian_path = '/mnt/c/winapps/obsidian/obsidian-vault'
-vim.g.greetings = {
+glo.obsidian_path = '/mnt/d/yashu/apps/obsidian/obsidian-vault/'
+glo.greetings = {
 	" did your todo's ? ",
 	' hydrate ',
 	' banana ',
 	' music ',
 }
 
-vim.g.have_nerd_font = true
-vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
-vim.o.breakindent = true
-vim.o.number = true
-vim.o.relativenumber = true
-vim.o.cursorline = true
-vim.o.wrap = false
-vim.o.scrolloff = 8
-vim.o.sidescrolloff = 8
-vim.o.tabstop = 2
-vim.o.shiftwidth = 2
-vim.o.expandtab = false
-vim.o.showmode = false
-vim.o.ignorecase = true
-vim.o.smartcase = true
--- vim.o.signcolumn = 'yes'
-vim.o.updatetime = 250
-vim.o.timeoutlen = 300
-vim.o.splitright = true
-vim.o.splitbelow = true
-vim.o.cmdheight = 0
--- vim.o.list = true
--- vim.o.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
-vim.o.confirm = true
+glo.have_nerd_font = true
+vim.schedule(function() opt.clipboard = 'unnamedplus' end)
+opt.breakindent = true
+opt.number = true
+opt.relativenumber = true
+opt.cursorline = true
+opt.wrap = false
+opt.scrolloff = 8
+opt.sidescrolloff = 8
+opt.tabstop = 2
+opt.shiftwidth = 2
+opt.expandtab = false
+opt.showmode = false
+opt.ignorecase = true
+opt.smartcase = true
+-- opt.signcolumn = 'yes'
+opt.updatetime = 250
+opt.timeoutlen = 300
+opt.splitright = true
+opt.splitbelow = true
+opt.cmdheight = 0
+-- opt.list = true
+-- opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+opt.confirm = true
+opt.foldlevel = 99
+opt.foldlevelstart = 99
 
 -- highlight when yanking (copying) text
 vim.api.nvim_create_autocmd('TextYankPost', {

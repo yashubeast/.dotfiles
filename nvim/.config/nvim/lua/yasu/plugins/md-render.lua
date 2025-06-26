@@ -13,6 +13,10 @@ return {
   -- :checkhealth render-markdown
   -- https://github.com/MeanderingProgrammer/render-markdown.nvim/issues/138#issuecomment-2295422741
   init = function()
+		-- vim.opt.termguicolors = true
+		vim.api.nvim_set_hl(0, "@markup.italic.markdown_inline", { italic = true })
+		vim.api.nvim_set_hl(0, "@markup.strong.markdown_inline", { bold = true })
+
     local colorInline_bg = colors["linkarzu_color02"]
     local color_fg = colors["linkarzu_color26"]
     -- local color_sign = "#ebfafa"
@@ -75,76 +79,46 @@ return {
 
 		render_modes = true,
 
-		-- de-render markdown when the cursor is on the line
-		-- anti_conceal = {
-		-- 	enabled = true,
-		-- 	ignore = {
-		-- 		code_background = true,
-		-- 		sign = true,
-		-- 	},
-		-- 	above = 0,
-		-- 	below = 0,
-		-- },
-
 		quote = {
+			enabled = true,
 			-- icon = '▋',
 			repeat_linebreak = true,
 		},
 
-		-- callout = {
-		-- 	note      = { raw = '[!NOTE]',      rendered = '󰋽 Note',      highlight = 'RenderMarkdownInfo',    category = 'github'   },
-		-- 	tip       = { raw = '[!TIP]',       rendered = '󰌶 Tip',       highlight = 'RenderMarkdownSuccess', category = 'github'   },
-		-- 	important = { raw = '[!IMPORTANT]', rendered = '󰅾 Important', highlight = 'RenderMarkdownHint',    category = 'github'   },
-		-- 	warning   = { raw = '[!WARNING]',   rendered = '󰀪 Warning',   highlight = 'RenderMarkdownWarn',    category = 'github'   },
-		-- 	caution   = { raw = '[!CAUTION]',   rendered = '󰳦 Caution',   highlight = 'RenderMarkdownError',   category = 'github'   },
-		-- 	abstract  = { raw = '[!ABSTRACT]',  rendered = '󰨸 Abstract',  highlight = 'RenderMarkdownInfo',    category = 'obsidian' },
-		-- 	summary   = { raw = '[!SUMMARY]',   rendered = '󰨸 Summary',   highlight = 'RenderMarkdownInfo',    category = 'obsidian' },
-		-- 	tldr      = { raw = '[!TLDR]',      rendered = '󰨸 Tldr',      highlight = 'RenderMarkdownInfo',    category = 'obsidian' },
-		-- 	info      = { raw = '[!INFO]',      rendered = '󰋽 Info',      highlight = 'RenderMarkdownInfo',    category = 'obsidian' },
-		-- 	todo      = { raw = '[!TODO]',      rendered = '󰗡 Todo',      highlight = 'RenderMarkdownInfo',    category = 'obsidian' },
-		-- 	hint      = { raw = '[!HINT]',      rendered = '󰌶 Hint',      highlight = 'RenderMarkdownSuccess', category = 'obsidian' },
-		-- 	success   = { raw = '[!SUCCESS]',   rendered = '󰄬 Success',   highlight = 'RenderMarkdownSuccess', category = 'obsidian' },
-		-- 	check     = { raw = '[!CHECK]',     rendered = '󰄬 Check',     highlight = 'RenderMarkdownSuccess', category = 'obsidian' },
-		-- 	done      = { raw = '[!DONE]',      rendered = '󰄬 Done',      highlight = 'RenderMarkdownSuccess', category = 'obsidian' },
-		-- 	question  = { raw = '[!QUESTION]',  rendered = '󰘥 Question',  highlight = 'RenderMarkdownWarn',    category = 'obsidian' },
-		-- 	help      = { raw = '[!HELP]',      rendered = '󰘥 Help',      highlight = 'RenderMarkdownWarn',    category = 'obsidian' },
-		-- 	faq       = { raw = '[!FAQ]',       rendered = '󰘥 Faq',       highlight = 'RenderMarkdownWarn',    category = 'obsidian' },
-		-- 	attention = { raw = '[!ATTENTION]', rendered = '󰀪 Attention', highlight = 'RenderMarkdownWarn',    category = 'obsidian' },
-		-- 	failure   = { raw = '[!FAILURE]',   rendered = '󰅖 Failure',   highlight = 'RenderMarkdownError',   category = 'obsidian' },
-		-- 	fail      = { raw = '[!FAIL]',      rendered = '󰅖 Fail',      highlight = 'RenderMarkdownError',   category = 'obsidian' },
-		-- 	missing   = { raw = '[!MISSING]',   rendered = '󰅖 Missing',   highlight = 'RenderMarkdownError',   category = 'obsidian' },
-		-- 	danger    = { raw = '[!DANGER]',    rendered = '󱐌 Danger',    highlight = 'RenderMarkdownError',   category = 'obsidian' },
-		-- 	error     = { raw = '[!ERROR]',     rendered = '󱐌 Error',     highlight = 'RenderMarkdownError',   category = 'obsidian' },
-		-- 	bug       = { raw = '[!BUG]',       rendered = '󰨰 Bug',       highlight = 'RenderMarkdownError',   category = 'obsidian' },
-		-- 	example   = { raw = '[!EXAMPLE]',   rendered = '󰉹 Example',   highlight = 'RenderMarkdownHint' ,   category = 'obsidian' },
-		-- 	quote     = { raw = '[!QUOTE]',     rendered = '󱆨 Quote',     highlight = 'RenderMarkdownQuote',   category = 'obsidian' },
-		-- 	cite      = { raw = '[!CITE]',      rendered = '󱆨 Cite',      highlight = 'RenderMarkdownQuote',   category = 'obsidian' },
-		-- },
-
     checkbox = {
       enabled = true,
-			-- right_pad = 1,
 
       unchecked = {
         icon = "󰄱",
       },
-
       checked = {
         icon = "󰱒",
       },
 
-			-- custom = {
-			-- 	todo = { raw = '[-]', rendered = '󰥔', highlight = 'RenderMarkdownTodo', scope_highlight = nil },
-			-- 	scope_highlight = @markup.strikethrough
-			-- },
+			-- TODO: CHANGE COLOR FOR CUSTOM CHECKLISTS
+			custom = {
+				todo = {
+					raw = '[~]',
+					rendered = '󰥔',
+					highlight = 'RenderMarkdownTodo',
+					scope_highlight = nil
+				},
+				alert = {
+					raw = '[!]',
+					rendered = '',
+					highlight = 'RenderMarkdownTodo',
+					scope_highlight = nil},
+				},
     },
 
 		code = {
+			enabled = true,
 			sign = false,
-			style = 'full',
+			-- style = 'full',
 			width = 'block',
-			-- left_pad = 2,
-			-- right_pad = 4,
+			-- left_pad = 1,
+			right_pad = 1,
+			border = 'thin',
 		},
 
 		dash = {
@@ -152,6 +126,7 @@ return {
 		},
 
     heading = {
+			enabled = true,
       icons = { "󰎤 ", "󰎧 ", "󰎪 ", "󰎭 ", "󰎱 ", "󰎳 " },
 			width = 'block',
 			position = 'inline',
@@ -175,35 +150,24 @@ return {
       },
     },
 
-		-- broken doesn't work properly
-		-- indent = {
-		-- 	enabled = true,
-		-- skip_heading = true,
-		-- },
-
     bullet = {
-      -- Turn on / off list bullet rendering
       enabled = true,
-			render_modes = true,
-			-- icons = { '●' },
-			icons = { '' },
+			icons = {''},
     },
 
     -- html = {
-    --   -- Turn on / off all HTML rendering
     --   enabled = true,
-    --   comment = {
-    --     -- Turn on / off HTML comment concealing
-    --     conceal = false,
-    --   },
+    --   -- comment = {
+    --   --   -- Turn on / off HTML comment concealing
+    --   --   conceal = false,
+    --   -- },
     -- },
 
-    -- link = {
-    --   image = vim.g.neovim_mode == "skitty" and "" or "󰥶 ",
-    --   custom = {
-    --     youtu = { pattern = "youtu%.be", icon = "󰗃 " },
-    --   },
-    -- },
+		-- link = {
+		-- 	-- wiki = {
+		-- 	-- 	icon = '󱗖 ',
+		-- 	-- },
+		-- },
 
 		sign = {
 			enabled = false,

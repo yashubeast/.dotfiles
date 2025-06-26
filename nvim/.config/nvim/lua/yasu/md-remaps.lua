@@ -1,14 +1,16 @@
--- search UP for markdown heading
-vim.keymap.set({ "n", "v" }, "gk", function()
-  vim.cmd("silent! ?^##\\+\\s.*$")
-  vim.cmd("nohlsearch")
-end, { desc = "[P] go to previous markdown header" })
 
 -- search DOWN for markdown heading
-vim.keymap.set({ "n", "v" }, "gj", function()
-  vim.cmd("silent! /^##\\+\\s.*$")
-  vim.cmd("nohlsearch")
-end, { desc = "[P] go to next markdown header" })
+-- vim.keymap.set({ "n", "v" }, "gj", function()
+--   vim.cmd("silent! /^##\\+\\s.*$")
+--   vim.cmd("nohlsearch")
+-- end, { desc = "[P] go to next markdown header" })
+
+-- search UP for markdown heading
+-- vim.keymap.set({ "n", "v" }, "gk", function()
+--   vim.cmd("silent! ?^##\\+\\s.*$")
+--   vim.cmd("nohlsearch")
+-- end, { desc = "[P] go to previous markdown header" })
+
 
 -------------------------------------------------------------------------------
 --                           Folding section
