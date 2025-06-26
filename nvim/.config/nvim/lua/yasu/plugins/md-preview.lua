@@ -5,18 +5,20 @@
 -- https://github.com/iamcco/markdown-preview.nvim
 
 return {
-  "iamcco/markdown-preview.nvim",
-	enabled = false,
-  cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-  build = "cd app && yarn install",
-  init = function()
-    vim.g.mkdp_filetypes = { "markdown" }
-		vim.g.mkdp_markdown_css = ''  -- disable custom CSS if interfering
-		vim.g.mkdp_preview_options = {
-			markdown = {
-				breaks = true
+	{
+		"iamcco/markdown-preview.nvim",
+		enabled = true,
+		cmd = { "MarkdownPreview" },
+		ft = { "markdown" },
+		build = "cd app && yarn install",
+		init = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+			vim.g.mkdp_markdown_css = ''  -- disable custom CSS if interfering
+			vim.g.mkdp_preview_options = {
+				markdown = {
+					breaks = true,
+				}
 			}
-		}
-  end,
-  ft = { "markdown" },
+		end,
+	},
 }
