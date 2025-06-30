@@ -1,5 +1,3 @@
-export themeDir="$HOME/.config/yasu/theme/"
-
 export font="JetBrainsMono Nerd Font 12"
 
 export cwhite="#ffffff"
@@ -19,7 +17,9 @@ export cprimary="$cpink"
 export csecondary="$cazure"
 
 # export wallpaper="cloud.png"
-export wallpaper="cloud.png"
+wallpaperDir="/mnt/d/yashu/discord pics/1 piktures/wallpapers/"
+wallpaperFile="lain.jpg"
+export wallpaper="${wallpaperDir}${wallpaperFile}"
 
 # wibar
 export ctransparency="80"

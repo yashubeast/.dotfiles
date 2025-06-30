@@ -19,7 +19,6 @@ local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
 local theme = {}
-local themeDir = getenv("themeDir")
 local font = getenv("font")
 
 theme.cbackground = getenv("cbackground")
@@ -39,7 +38,7 @@ theme.cazure = getenv("cazure")
 
 theme.charging = theme.cyellow
 
-theme.wallpaper = themeDir .. getenv("wallpaper")
+theme.wallpaper = getenv("wallpaper")
 
 theme.font          = font
 theme.hotkeys_font  = font

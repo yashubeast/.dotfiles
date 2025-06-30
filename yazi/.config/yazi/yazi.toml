@@ -1,2 +1,6 @@
 [mgr]
 show_hidden = true
+
+[preview]
+image_width = 0
+image_height = 0
