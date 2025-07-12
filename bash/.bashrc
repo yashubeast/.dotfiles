@@ -3,6 +3,7 @@
 
 source ~/.config/yasu/theme/active.sh
 
+# export XDG_DATA_DIRS="$HOME/.local/share/applications:/usr/share/applications:$HOME/.config/rofi/apps"
 export EDITOR="nvim"
 # export wallpaperDir="/mnt/d/yashu/discord pics/1 piktures/wallpapers/"
 

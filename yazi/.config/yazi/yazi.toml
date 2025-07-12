@@ -1,7 +1,11 @@
 [mgr]
-show_hidden = true
-scroll_wrapping = false
+show_hidden         = true
+scrolloff           = 8
 
-[preview]
-image_width = 0
-image_height = 0
+# [preview]
+
+[open]
+rules = [
+  { mime = "inode/directory", use = "enter" },
+  { mime = "*",              use = "edit" }
+]

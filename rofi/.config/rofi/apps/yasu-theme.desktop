@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=themer
+Exec=/home/yasu/.dotfiles/yasu/.config/yasu/theme/run.sh
+Icon=preferences-desktop-theme
+Categories=Utility;
+Terminal=false

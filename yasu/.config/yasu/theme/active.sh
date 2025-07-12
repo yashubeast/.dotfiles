@@ -1,6 +1,6 @@
 source "/home/yasu/.dotfiles/yasu/.config/yasu/theme/default/theme.sh"
-source "/home/yasu/.dotfiles/yasu/.config/yasu/theme/pink/theme.sh"
-export wallFile="od_tux.png"
+source "/home/yasu/.dotfiles/yasu/.config/yasu/theme/default/theme.sh"
+export wallFile="joyboy.png"
 
 ################################################################################
 # kitty config generation, only active when kittyGeneration=1
