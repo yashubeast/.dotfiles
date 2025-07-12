@@ -1,8 +1,16 @@
+local function ge(var)
+    -- local f = io.popen("bash -c 'source ~/.config/yasu/theme/active.sh && echo -n $" .. var .. "'")
+    local f = io.popen("bash -c 'source ~/.config/yasu/theme/active.sh && echo -n \"$" .. var .. "\"'")
+    local val = f:read("*a")
+    f:close()
+    return val
+end
+
 opt = vim.o
 glo = vim.g
 
 -- vim.g.md_heading_bg = 'transparent'
-glo.obsidian_path = '/mnt/d/yashu/apps/obsidian/obsidian-vault/'
+glo.obsidian_path = ge("obsidian_path")
 glo.greetings = {
 	" did your todo's ? ",
 	' hydrate ',
@@ -10,6 +18,7 @@ glo.greetings = {
 	' music ',
 }
 
+opt.guifont = ge("nvimFont") .. ":h" .. ge("fontSize")
 glo.have_nerd_font = true
 vim.schedule(function() opt.clipboard = 'unnamedplus' end)
 opt.breakindent = true

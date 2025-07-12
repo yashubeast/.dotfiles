@@ -60,5 +60,10 @@ return {
 			builtin.find_files { cwd = vim.g.obsidian_path }
 		end, { desc = '[P] search in [o]bsidian directory' })
 
+		-- search in config dir
+		km('n', '<leader>sm', function()
+			builtin.find_files { cwd = vim.fn.expand('~/') }
+		end, { desc = '[P] search in config directory' })
+
 	end,
 }

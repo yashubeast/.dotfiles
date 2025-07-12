@@ -1,5 +1,6 @@
 [mgr]
 show_hidden = true
+scroll_wrapping = false
 
 [preview]
 image_width = 0

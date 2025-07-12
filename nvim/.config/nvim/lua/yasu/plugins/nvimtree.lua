@@ -1,7 +1,7 @@
 --NOTE: keybinds at the bottom
 return {
 	"nvim-tree/nvim-tree.lua",
-	enabled = true,
+	enabled = false,
 	version = "*",
 	lazy = false,
 	dependencies = {
@@ -25,7 +25,7 @@ return {
 				-- preserve_window_proportions = false,
 				-- number = false,
 				-- relativenumber = false,
-				-- signcolumn = "yes",
+				signcolumn = "no",
 				-- float = {
 				-- 	enable = false,
 				-- 	quit_on_focus_loss = true,
@@ -62,7 +62,7 @@ return {
 					webdev_colors = true,
 					git_placement = "before",
 					padding = " ",
-					symlink_arrow = " ➛ ",
+					symlink_arrow = " -> ",
 					show = {
 						file = true,
 						folder = true,

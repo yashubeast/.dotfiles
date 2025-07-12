@@ -6,12 +6,16 @@
 	lctl  lmet lalt spc ralt rctl
 )
 
+(defalias
+	esc-ctl (tap-hold 180 180 esc lctl)
+)
+
 (deflayer base
-	_     _ _ _ _ _ _ _ _ _ _ _ _   _
-	_     _ _ _ _ _ _ _ _ _ _ _ _   _
-	esc   _ _ _ _ _ _ _ _ _ _ _ _
-	_     _ _ _ _ _ _ _ _ _ _ _
-	_     _ _ _ (layer-toggle nav) _
+	_        _ _ _ _ _ _ _ _ _ _ _ _   _
+	_        _ _ _ _ _ _ _ _ _ _ _ _   _
+	esc      _ _ _ _ _ _ _ _ _ _ _ _
+	_        _ _ _ _ _ _ _ _ _ _ _
+	_        _ _ _ (layer-toggle nav) _
 )
 
 (deflayer nav
@@ -19,5 +23,37 @@
 	_     6 7 8 9 0 _ _ _ _ _ _ _   _
 	lctl  1 2 3 4 5 left down up right _ _ _
 	_     _ _ _ _ _ _ _ _ _ _ _
-	_     _ _ (macro C-b) _ _
+	_     _ _ (layer-toggle tmux) _ _
+)
+
+(defalias
+  1 (macro C-b Digit1)
+  2 (macro C-b Digit2)
+  3 (macro C-b Digit3)
+  4 (macro C-b Digit4)
+  5 (macro C-b Digit5)
+	n (macro C-b n)
+	p (macro C-b p)
+
+	t (macro C-b t)
+
+	c (macro C-b c)
+	x (macro C-b x)
+	, (macro C-b ,)
+
+	[ (macro C-b [)
+	/ (macro C-b /)
+
+	left (macro C-b left)
+	down (macro C-b down)
+	up (macro C-b up)
+	right (macro C-b right)
+)
+
+(deflayer tmux
+	_     _ _ _ _ _ _ _ _ _ _ _ _   _
+	_     _ _ _ _ @t _ _ _ _ @p @[ _   _
+	_     @1 @2 @3 @4 @5 @left @down @up @right _ _ _
+	_     _ @x @c _ _ @n _ @, _ @/ _
+	_     _ _ _ _ _
 )

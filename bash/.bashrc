@@ -1,15 +1,17 @@
 # if not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-source ~/.config/yasu/theme.sh
+source ~/.config/yasu/theme/active.sh
 
-export EDITOR='nvim'
+export EDITOR="nvim"
+# export wallpaperDir="/mnt/d/yashu/discord pics/1 piktures/wallpapers/"
 
 # aliases
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias nv='nvim'
 alias y='yazi'
+alias ls='lsd'
 alias ff="fastfetch --logo small \
 	--structure 'title:os:packages:shell:de:wm:theme:icons:terminal' \
 	--os-format '{name}' \
@@ -28,14 +30,15 @@ alias ff="fastfetch --logo small \
 	"
 
 # setup stuff
+alias ytheme='~/.config/yasu/theme/run.sh'
 alias backup='~/.config/yasu/backup.sh'
-alias pwall='DIR="/mnt/d/yashu/discord pics/1 piktures/wallpapers";
+alias pwall='DIR=$wallpaperDir;
   find "$DIR" -type f -print0 |
   xargs -0 -I{} printf "%s\t%s\n" "{}" "$(basename "{}")" |
   fzf --delimiter="\t" --with-nth=2 \
       --preview="feh --bg-scale {1}" \
-      --bind="enter:execute(feh --bg-scale {1})+abort"'
-alias vwall="sxiv -f -q -r -s f /mnt/d/yashu/discord\ pics/1\ piktures/wallpapers/*"
+      --bind="enter:execute(feh --bg-scale {})+abort"'
+alias vwall="sxiv -f -q -r -s f $wallpaperDir*"
 
 # git stuff
 alias gs='git status'
@@ -81,27 +84,42 @@ alias hibernate='sudo systemctl hibernate'
 # functions
 pj() {
 	case "$1" in
-		d) cd /mnt/d ;;
+		# configs
 		nvim) cd ~/.config/nvim ;;
-		obs) cd /mnt/d/yashu/apps/obsidian/obsidian-vault/ ;;
+		kitty) cd ~/.config/kitty ;;
 		awm) cd ~/.config/awesome ;;
-		awmt) cd ~/.config/awesome/theme ;;
+		yasu) cd ~/.config/yasu ;;
+		theme) cd ~/.config/yasu/theme ;;
+		# misc
+		d) cd /mnt/d ;;
+		obs) cd /mnt/d/yashu/apps/obsidian/obsidian-vault/ ;;
 	esac
 }
 
 nve() {
 	case "$1" in
+		# configs
 		bash) nvim ~/.bashrc ;;
-		theme) nvim ~/.config/yasu/theme.sh ;;
-		backup) nvim ~/.config/yasu/backup.sh ;;
 		awm) nvim ~/.config/awesome/rc.lua ;;
-		awmt) nvim ~/.config/awesome/theme/theme.lua ;;
+		awmt) nvim ~/.config/awesome/core/theme.lua ;;
 		kitty) nvim ~/.config/kitty/kitty.conf ;;
+		kittyt) nvim ~/.config/kitty/kitty.template.conf ;;
 		tmux) nvim ~/.tmux.conf ;;
 		yazi) nvim ~/.config/yazi/yazi.toml ;;
 		picom) nvim ~/.config/picom/picom.conf ;;
 		kanata) nvim ~/.config/kanata/config.kbd ;;
+		rofi) nvim ~/.config/rofi/config.rasi ;;
+
+		# custom stuff
+		ytheme) nvim ~/.config/yasu/theme/run.sh ;;
+		ythemea) nvim ~/.config/yasu/theme/active.sh ;;
+		theme) nvim ~/.config/yasu/theme/default/theme.sh ;;
+		backup) nvim ~/.config/yasu/backup.sh ;;
+
+		# misc
 		ff) nvim ~/.config/fastfetch/config.jsonc ;;
+		lsd) nvim ~/.config/lsd/config.yaml ;;
+		discord) sudo nvim /opt/discord/resources/build_info.json ;;
 	esac
 }
 
