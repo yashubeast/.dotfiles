@@ -1,0 +1,7 @@
+[manager]
+show_hidden = true
+scroll_wrapping = false
+
+[preview]
+image_width = 0
+image_height = 0

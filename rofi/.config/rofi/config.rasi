@@ -1,0 +1,9 @@
+configuration {
+  prompt: " ";
+  display-drun: " ";
+  scrollbar: false;
+}
+
+* {
+	scrollbar: false;
+}
