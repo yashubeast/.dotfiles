@@ -91,6 +91,7 @@ pj() {
 		awm) cd ~/.config/awesome ;;
 		yasu) cd ~/.config/yasu ;;
 		theme) cd ~/.config/yasu/theme ;;
+		rofi) cd ~/.config/rofi ;;
 		# misc
 		d) cd /mnt/d ;;
 		obs) cd /mnt/d/yashu/apps/obsidian/obsidian-vault/ ;;
@@ -110,6 +111,9 @@ nve() {
 		picom) nvim ~/.config/picom/picom.conf ;;
 		kanata) nvim ~/.config/kanata/config.kbd ;;
 		rofi) nvim ~/.config/rofi/config.rasi ;;
+		rofit) nvim ~/.config/rofi/theme.rasi ;;
+		rofitt) nvim ~/.config/rofi/theme.template.rasi ;;
+		rofitd) nvim ~/.config/rofi/theme.default.rasi ;;
 
 		# custom stuff
 		ytheme) nvim ~/.config/yasu/theme/run.sh ;;
