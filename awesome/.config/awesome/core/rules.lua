@@ -16,6 +16,33 @@ awful.rules.rules = {
 		}
 	},
 
+	-- how to use rules, use xprop to get app info
+	-- {
+	-- 	rule = {
+	-- 		class = "firefox",
+	-- 		instance = "navigator",
+	-- 		name = {
+	-- 			"firefox1",
+	-- 			"firefox2",
+	-- 			"chrome"
+	-- 		} -- use rule_any in parent dict if using multiple entries in a value
+	-- 	},
+	-- 	properties = {tag = "2"}
+	-- },
+
+	{
+		rule = {
+			class = "floorp"
+		},
+		properties = { tag = "2" }
+	},
+	{
+		rule = {
+			class = "discord"
+		},
+		properties = { tag = "5" }
+	},
+
 	-- floating clients
 	{ rule_any = {
 		instance = {
