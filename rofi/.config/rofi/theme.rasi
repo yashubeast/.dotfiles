@@ -1,0 +1,63 @@
+* {
+    background-color:            transparent;
+    background:                  #00000070;
+		primary:                     #ffc0cb;
+		secondary:                   #f0ffff;
+		disabled:                    #707880;
+}
+element {
+    padding: 0px ;
+    cursor:  pointer;
+    spacing: 8px ;
+    border:  0;
+		orientation: horizontal;
+		children: [element-text];
+}
+element normal.normal {
+    text-color:       var(secondary);
+}
+element selected.normal {
+    text-color:       var(primary);
+}
+element alternate.normal {
+    text-color:       var(secondary);
+}
+element-text {
+    background-color: inherit;
+    text-color:       inherit;
+		horizontal-align: 0.5;
+}
+window {
+    padding:          10;
+    background-color: var(background);
+    border:           1;
+		border-color:     var(primary);
+}
+num-filtered-rows {
+    expand:     false;
+    text-color: var(disabled);
+}
+num-rows {
+    expand:     false;
+    text-color: var(disabled);
+}
+textbox-num-sep {
+    expand:     false;
+    str:        "/";
+    text-color: var(disabled);
+}
+inputbar {
+    padding:    0px ;
+    spacing:    0px ;
+    text-color: var(secondary);
+    children:   ["prompt","entry","num-filtered-rows","textbox-num-sep","num-rows"];
+}
+entry {
+    text-color:        var(secondary);
+    spacing:           0;
+		horizontal-align:  0.5;
+}
+prompt {
+    spacing:    0;
+    text-color: var(secondary);
+}

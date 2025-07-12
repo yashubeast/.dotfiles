@@ -1,6 +1,11 @@
 configuration {
-/*	modes: "window,drun,run,ssh";*/
 	font: "JetBrainsMono Nerd Font 16";
+	cycle: false;
+	steal-focus: true;
+	drun-display-format: "{name}";
+	display-drun: "";
+// drun-display-format: "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
+/*	modes: "window,drun,run,ssh";*/
 /*	location: 0;*/
 /*	yoffset: 0;*/
 /*	xoffset: 0;*/
@@ -26,7 +31,6 @@ configuration {
 /*	drun-categories: ;*/
 /*	drun-exclude-categories: ;*/
 /*	drun-show-actions: false;*/
-/*	drun-display-format: "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";*/
 /*	drun-url-launcher: "xdg-open";*/
 /*	disable-history: false;*/
 /*	ignored-prefixes: "";*/
@@ -34,7 +38,6 @@ configuration {
 /*	sorting-method: "normal";*/
 /*	case-sensitive: false;*/
 /*	case-smart: false;*/
-	cycle: false;
 /*	sidebar-mode: false;*/
 /*	hover-select: false;*/
 /*	eh: 1;*/
@@ -60,7 +63,6 @@ configuration {
 /*	drun-use-desktop-cache: false;*/
 /*	drun-reload-desktop-cache: false;*/
 /*	normalize-match: false;*/
-	steal-focus: true;
 /*	application-fallback-icon: ;*/
 /*	refilter-timeout-limit: 300;*/
 /*	xserver-i300-workaround: false;*/
@@ -166,3 +168,4 @@ configuration {
       sorting-method:    "name";
   }
 }
+@theme "theme"

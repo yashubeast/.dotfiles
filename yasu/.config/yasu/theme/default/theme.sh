@@ -6,6 +6,7 @@ export font="JetBrains Mono"
 export fontNerd="JetBrainsMono Nerd Font"
 export fontNerdPropo="JetBrainsMono Nerd Font Propo"
 export fontSize=12
+export transparent=true
 export transparency=70
 
 # colors
@@ -52,4 +53,11 @@ export obsidian_path='/mnt/d/yashu/apps/obsidian/obsidian-vault/'
 export kittyGeneration=1 # boolean to generate kitty conf or not
 export kittyTransparency=$(awk "BEGIN { print $transparency / 100 }")
 export kittyFont=$fontNerd
-export kittyFontSize=15
+export kittyFontSize=14
+
+# rofi
+export rofiGeneration=1 # boolean to generate rofi conf or not
+export rofiBackground=$background$transparency
+export rofiPrimary=$primary
+export rofiSecondary=$secondary
+export rofiDisabled=$disabled
