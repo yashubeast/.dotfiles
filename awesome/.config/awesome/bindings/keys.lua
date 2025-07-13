@@ -104,7 +104,10 @@ local globalkeys = gears.table.join(
 	awful.key({ modkey, "Shift" }, "q", awesome.quit,
 		{ description = "quit awesome", group = "awesome" }),
 
-	awful.key({ modkey }, "r", function() awful.spawn("rofi -show drun") end,
+	awful.key({ modkey }, "r",
+		function()
+			awful.spawn.with_shell("~/.config/rofi/scripts/launcher.sh")
+		end,
 		{ description = "rofi", group = "launcher" })
 )
 

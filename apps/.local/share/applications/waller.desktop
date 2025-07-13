@@ -5,4 +5,3 @@ Exec=/home/yasu/.dotfiles/yasu/.config/yasu/theme/waller.sh
 Icon=preferences-desktop-theme
 Categories=Utility;
 Terminal=false
-

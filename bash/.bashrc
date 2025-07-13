@@ -120,6 +120,7 @@ nve() {
 		ythemea) nvim ~/.config/yasu/theme/active.sh ;;
 		theme) nvim ~/.config/yasu/theme/default/theme.sh ;;
 		backup) nvim ~/.config/yasu/backup.sh ;;
+		launcher) nvim ~/.config/rofi/scripts/launcher.sh;;
 
 		# misc
 		ff) nvim ~/.config/fastfetch/config.jsonc ;;

@@ -28,6 +28,9 @@ element-text {
 	horizontal-align: 0.5;
 }
 window {
+	anchor:           north;
+	location:         center;
+	y-offset:         -200;
 	width:            40ch;
 	padding:          10;
 	background-color: var(background);
@@ -36,7 +39,7 @@ window {
 }
 listview {
 	lines: 10;
-	fixed-height: true;
+	fixed-height: false;
 	dynamic: true;
 }
 num-filtered-rows {
@@ -56,7 +59,8 @@ inputbar {
 	padding:    0px ;
 	spacing:    0px ;
 	text-color: var(secondary);
-	children:   ["prompt","entry","num-filtered-rows","textbox-num-sep","num-rows"];
+	// children:   ["prompt","entry","num-filtered-rows","textbox-num-sep","num-rows"];
+	children:   ["entry"];
 }
 entry {
 	text-color:        var(secondary);
