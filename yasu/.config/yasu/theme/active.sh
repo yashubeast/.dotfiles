@@ -1,6 +1,6 @@
 source "/home/yasu/.dotfiles/yasu/.config/yasu/theme/default/theme.sh"
 source "/home/yasu/.dotfiles/yasu/.config/yasu/theme/pink/theme.sh"
-export wallFile="wave.jpg"
+export wallFile="a_cartoon_of_a_robot_and_a_girl_looking_at_a_pink_background.png"
 
 ################################################################################
 # kitty config generation, only active when kittyGeneration=1

@@ -31,15 +31,7 @@ alias ff="fastfetch --logo small \
 	"
 
 # setup stuff
-alias ytheme='~/.config/yasu/theme/run.sh'
-alias backup='~/.config/yasu/backup.sh'
-alias pwall='DIR=$wallpaperDir;
-  find "$DIR" -type f -print0 |
-  xargs -0 -I{} printf "%s\t%s\n" "{}" "$(basename "{}")" |
-  fzf --delimiter="\t" --with-nth=2 \
-      --preview="feh --bg-scale {1}" \
-      --bind="enter:execute(feh --bg-scale {})+abort"'
-alias vwall="sxiv -f -q -r -s f $wallpaperDir*"
+alias mprev='mpv --loop $(find . -type f -iregex ".*\.\(png\|jpe?g\|gif\|webp\|mp4\|mkv\|webm\|mov\)$" | sort)'
 
 # git stuff
 alias gs='git status'
@@ -114,6 +106,7 @@ nve() {
 		rofit) nvim ~/.config/rofi/theme.rasi ;;
 		rofitt) nvim ~/.config/rofi/theme.template.rasi ;;
 		rofitd) nvim ~/.config/rofi/theme.default.rasi ;;
+		mpv) nvim ~/.config/mpv/input.conf;;
 
 		# custom stuff
 		ytheme) nvim ~/.config/yasu/theme/run.sh ;;
