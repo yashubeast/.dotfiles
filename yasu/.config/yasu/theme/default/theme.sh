@@ -1,6 +1,6 @@
 export terminal="kitty"
 export editor=$EDITOR
-export wallDir="/mnt/d/yashu/discord pics/1 piktures/wallpapers/"
+# export wallDir="/mnt/d/yashu/shit/pix/walls/"
 
 export font="JetBrains Mono"
 export fontNerd="JetBrainsMono Nerd Font"

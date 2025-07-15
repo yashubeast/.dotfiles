@@ -1,0 +1,108 @@
+/* HEAD: global */
+
+span.chipletContainerInner__10651.chipletContainerInline__10651 /* fancy server icon shit */
+{display: none !important;}
+
+/* HEAD: stupid top bar */
+
+div[aria-label='Inbox'],
+div[aria-label='Help'],
+.title__85643 > div[style], /* icon of server */
+.title__85643 svg /* icon of friends menu */
+{ display: none !important }
+
+ /* custom title of the bar */
+div[class='defaultColor__4bd52 lineClamp1__4bd52 text-sm/medium_cf4812'] { font-size: 0 !important; }
+div[class='defaultColor__4bd52 lineClamp1__4bd52 text-sm/medium_cf4812']::after
+{ font-size: 14px; content: 'please remove this discord'; }
+
+/* HEAD: sidebar.server */
+
+/* div[class='tutorialContainer__650eb'], /* 'discover' btn at bottom */
+/* div[class='listItemWrapper__91816'] /* 'add a server' btn at bottom */
+button[aria-label='User Settings']
+{ display: none !important; }
+
+/* HEAD: sidebar.channel */
+
+div[aria-label='Create Invite'], /* invite icon on hover */
+div[aria-label='Edit Channel'] /* gear icon on hover */
+{ display: none !important; }
+
+a[class='link__2ea32'], /* indiv channel div */
+div[class='link__2ea32'] /* indiv forum/thread div */
+{ border-radius: 0 !important; }
+
+/* NOTE: sidebar.channel.categories */
+button[aria-label='Create Channel'], /* '+' icon in channel-categories */
+svg[class='icon__29444'] /* > open/close icon in channel-categories */
+{ display: none !important; }
+/* centering stuff */
+div[class='mainContent__29444'] /* cateogory text-label */
+{ justify-content: center; }
+
+/* NOTE: sidebar.channel.dms */
+div[class='searchBar__35e86'], /* search box at top */
+div[class='friendsButtonContainer__35e86'], /* friends btn */
+li[class='channel__972a0 container_e45859'], /* nitro + shop btn */
+div[class='sectionDivider__35e86'], /* irrelevant divider b/w top-dm buttons and dm-list */
+h2[class='privateChannelsHeaderContainer__99e7c container__13cf1 header__13cf1 text-sm/medium__13cf1'], /* 'direct messages' btn */
+/* .subText__20a53, /* status in dm btns */
+div[class='closeButton__972a0'], /* close btn on dms */
+div[class='closeButton__972a0 closeButtonPlated__972a0'], /* fancy-close btn on dms */
+.subText__20a53:not(:has(> div > svg)) /* desc/status of dm-btns unless activity */
+{ display: none !important; }
+ul[aria-label='Direct Messages'] > li
+{ border-radius: 0 !important; }
+
+/* HEAD: main */
+
+div[aria-label='Reply'],
+div[aria-label='Forward'],
+div[aria-label='Edit Image with Apps']
+{ display: none !important }
+
+/* NOTE: main.channelHeader */
+div[aria-label='Hide Member List'],
+div[aria-label='Show Member List'],
+div[aria-label='Pinned Messages'],
+div[aria-label='Threads'],
+div[aria-label='Notification Settings'],
+/* NOTE: main.channelHeader.dm */
+div[aria-label='Add Friends to DM'],
+div[aria-label='Hide User Profile'],
+div[aria-label='Show User Profile']
+{ display: none !important; }
+
+/* NOTE: main.textbox */
+#channel-attach-SLASH_COMMAND, /* 'Use Apps' in + menu at left-most */
+button[aria-label='Send a gift'],
+button[aria-label='Select emoji'],
+button[aria-label='Open sticker picker'],
+button[aria-label='Open GIF picker'],
+button[aria-label='Apps'],
+div.buttons__74017 /* margin at right-most */
+{ display: none !important; }
+
+/* HEAD: sidebar.member */
+
+h3:has(span.headerContainer__095fe), /* 'activity' at top */
+div[class='container__0f2e8 openOnHover__0f2e8'] /* the activities themselfs */
+{ display: none !important }
+
+div[class='member__5d473 member_c8ffbb container__91a9d clickable__91a9d'] /* indiv member div */
+{ border-radius: 0 !important; }
+
+/* NOTE: sidebar.member.friendsMenu */
+h2[class='defaultColor__4bd52 heading-lg/semibold_cf4812 defaultColor__5345c header__7d20c'] /* active now title */
+{ display: none; } 
+
+/* NOTE: sidebar.member.dm */
+button[aria-label='More'],
+button[aria-label='Add Friend'],
+button[aria-label='Friend']
+{ display: none !important; }
+
+/* WARN: end of file */
+
+/* TEST: testing area */

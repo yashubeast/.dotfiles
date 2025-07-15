@@ -4,6 +4,7 @@ return {
 		name = "catppuccin",
 		priority = 1000,
 		lazy = false,
+		enabled = true,
 		config = function()
 			require("catppuccin").setup({
 				flavour = "mocha",
@@ -80,12 +81,9 @@ return {
 					lualine_a = { 'fileformat' },
 					lualine_b = { { "branch", icon = "" }, "diff", "diagnostics" },
 					lualine_c = { "filename" },
-					-- removed 'encoding'
 					lualine_x = { "filetype" },
 					lualine_y = {},
 					lualine_z = {},
-					-- lualine_y = { "progress" },
-					-- lualine_z = { "location" },
 				},
 				inactive_sections = {
 					lualine_a = {},

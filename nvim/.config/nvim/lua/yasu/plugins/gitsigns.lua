@@ -10,6 +10,8 @@ return {
   "lewis6991/gitsigns.nvim",
   event = "VeryLazy",
   opts = {
+		signcolumn = false,
+		numhl = true,
     signs = {
       add = { text = "▎" },
       change = { text = "▎" },

@@ -11,7 +11,24 @@ return {
 		},
 		opts = {
 			signs = false,
+			keywords = {
+				HEAD = { },
+				WARN = { color = "error" }
+			},
 		},
+		-- HEAD: what is this bro
+		-- PERF: whatever this is
+		-- TEST: lol whys this a thing
+
+		-- HACK: looks funky
+
+		-- TODO: what else
+
+		-- NOTE: this is a note
+
+		-- FIX: fix this
+		-- WARN: lmao
+
 	},
 	{
 		"sphamba/smear-cursor.nvim",

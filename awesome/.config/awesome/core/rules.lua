@@ -32,7 +32,7 @@ awful.rules.rules = {
 
 	{
 		rule = {
-			class = "floorp"
+			class = "zen"
 		},
 		properties = { tag = "2" }
 	},

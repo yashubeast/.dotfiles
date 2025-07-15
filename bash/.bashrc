@@ -1,18 +1,18 @@
 # if not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-source ~/.config/yasu/theme/active.sh
-
+# export wallDir="/mnt/d/yashu/shit/pix/walls/"
 # export XDG_DATA_DIRS="$HOME/.local/share/applications:/usr/share/applications:$HOME/.config/rofi/apps"
 export EDITOR="nvim"
 # export wallpaperDir="/mnt/d/yashu/discord pics/1 piktures/wallpapers/"
+
+source ~/.config/yasu/theme/active.sh
 
 # aliases
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias nv='nvim'
 alias y='yazi'
-alias ls='lsd'
 alias ff="fastfetch --logo small \
 	--structure 'title:os:packages:shell:de:wm:theme:icons:terminal' \
 	--os-format '{name}' \
@@ -20,18 +20,20 @@ alias ff="fastfetch --logo small \
 	--shell-format '{3}' \
 	--wm-format '{2}' \
 	--terminal-format '{2}' \
-	--color-keys '$cprimary' \
-	--color-title '$cprimary' \
-	--logo-color-1 '$cprimary' \
-	--logo-color-2 '$cprimary' \
-	--logo-color-3 '$cprimary' \
-	--logo-color-4 '$cprimary' \
-	--logo-color-5 '$cprimary' \
-	--logo-color-6 '$cprimary' \
+	--color-keys '$primary' \
+	--color-title '$primary' \
+	--logo-color-1 '$primary' \
+	--logo-color-2 '$primary' \
+	--logo-color-3 '$primary' \
+	--logo-color-4 '$primary' \
+	--logo-color-5 '$primary' \
+	--logo-color-6 '$primary' \
 	"
 
 # setup stuff
+alias vencord='sh -c "$(curl -sS https://raw.githubusercontent.com/Vendicated/VencordInstaller/main/install.sh)"'
 alias mprev='mpv --loop $(find . -type f -iregex ".*\.\(png\|jpe?g\|gif\|webp\|mp4\|mkv\|webm\|mov\)$" | sort)'
+alias backup='~/.dotfiles/backup.sh'
 
 # git stuff
 alias gs='git status'
@@ -43,16 +45,16 @@ alias gca='git commit -am'
 alias gp='git push'
 
 # tmux stuff
-alias tl='tmux ls'
+alias tls='tmux ls'
 alias tau='tmux attach -t uni'
 
 # docker stuff
-alias dp='docker ps'
-alias dpa='docker ps -a'
+alias dps='docker ps'
+alias dpsa='docker ps -a'
 alias dcr='docker container rm'
 # volume
 alias dv='docker volume'
-alias dvl='docker volume ls'
+alias dvs='docker volume ls'
 alias dvr='docker volume rm'
 alias dvp='docker volume prune'
 # image
@@ -62,7 +64,7 @@ alias dir='docker image rm'
 alias dip='docker image prune'
 # network
 alias dn='docker network'
-alias dnl='docker network ls'
+alias dns='docker network ls'
 alias dnr='docker network rm'
 alias dnp='docker network prune'
 # compose
@@ -74,6 +76,10 @@ alias kys='sudo systemctl poweroff'
 alias kysr='sudo reboot'
 alias hibernate='sudo systemctl hibernate'
 
+# sudo shit
+alias pacman='sudo pacman'
+alias sysctl='sudo systemctl'
+
 # functions
 pj() {
 	case "$1" in
@@ -84,6 +90,7 @@ pj() {
 		yasu) cd ~/.config/yasu ;;
 		theme) cd ~/.config/yasu/theme ;;
 		rofi) cd ~/.config/rofi ;;
+		vencord) cd ~/.config/Vencord;;
 		# misc
 		d) cd /mnt/d ;;
 		obs) cd /mnt/d/yashu/apps/obsidian/obsidian-vault/ ;;
@@ -103,16 +110,16 @@ nve() {
 		picom) nvim ~/.config/picom/picom.conf ;;
 		kanata) nvim ~/.config/kanata/config.kbd ;;
 		rofi) nvim ~/.config/rofi/config.rasi ;;
-		rofit) nvim ~/.config/rofi/theme.rasi ;;
-		rofitt) nvim ~/.config/rofi/theme.template.rasi ;;
-		rofitd) nvim ~/.config/rofi/theme.default.rasi ;;
 		mpv) nvim ~/.config/mpv/input.conf;;
 
+		# yasu/theme
+		themer) nvim ~/.config/yasu/theme/run.sh ;;
+		themew) nvim ~/.config/yasu/theme/waller.sh ;;
+		themea) nvim ~/.config/yasu/theme/active.sh ;;
+		themed) nvim ~/.config/yasu/theme/default/theme.sh ;;
+
 		# custom stuff
-		ytheme) nvim ~/.config/yasu/theme/run.sh ;;
-		ythemea) nvim ~/.config/yasu/theme/active.sh ;;
-		theme) nvim ~/.config/yasu/theme/default/theme.sh ;;
-		backup) nvim ~/.config/yasu/backup.sh ;;
+		backup) nvim ~/.dotfiles/backup.sh ;;
 		launcher) nvim ~/.config/rofi/scripts/launcher.sh;;
 
 		# misc
@@ -129,7 +136,7 @@ hex_to_rgb() {
     b=$((16#${hex:4:2}))
     echo "$r;$g;$b"
 }
-rgb=$(hex_to_rgb "$cprimary")
+rgb=$(hex_to_rgb "$primary")
 
 # prompt
 # PS1='\[\e[0m\]\w\[\e[38;2;'"$rgb"'m\]> \[\e[0m\]'

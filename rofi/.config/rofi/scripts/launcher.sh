@@ -60,6 +60,7 @@ case "$desktop" in
 
 			y\ *) open_query_url "y" "https://youtube.com/results?search_query=%s";;
 			g\ *) open_query_url "g" "https://www.google.com/search?q=%s";;
+			az\ *) open_query_url "az" "https://www.amazon.com/s/?field-keywords=%s";;
 			aur\ *) open_query_url "aur" "https://aur.archlinux.org/packages?K=%s";;
 			*) echo -n "$choice" | xclip -selection clipboard && notify-send "$choice";;
 
