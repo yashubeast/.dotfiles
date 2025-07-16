@@ -76,6 +76,7 @@ div[aria-label='Show User Profile']
 
 /* NOTE: main.textbox */
 #channel-attach-SLASH_COMMAND, /* 'Use Apps' in + menu at left-most */
+#channel-attach-THREAD, /* 'Create Thread' in + menu at left-most */
 button[aria-label='Send a gift'],
 button[aria-label='Select emoji'],
 button[aria-label='Open sticker picker'],

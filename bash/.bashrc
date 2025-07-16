@@ -1,9 +1,9 @@
 # if not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+export EDITOR="nvim"
 # export wallDir="/mnt/d/yashu/shit/pix/walls/"
 # export XDG_DATA_DIRS="$HOME/.local/share/applications:/usr/share/applications:$HOME/.config/rofi/apps"
-export EDITOR="nvim"
 # export wallpaperDir="/mnt/d/yashu/discord pics/1 piktures/wallpapers/"
 
 source ~/.config/yasu/theme/active.sh
@@ -12,7 +12,7 @@ source ~/.config/yasu/theme/active.sh
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias nv='nvim'
-alias y='yazi'
+alias e='yazi'
 alias ff="fastfetch --logo small \
 	--structure 'title:os:packages:shell:de:wm:theme:icons:terminal' \
 	--os-format '{name}' \
