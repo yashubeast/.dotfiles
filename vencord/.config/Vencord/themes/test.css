@@ -1,3 +1,7 @@
+:root {
+	--top-text: "please remove this discord";
+}
+
 /* HEAD: global */
 
 span.chipletContainerInner__10651.chipletContainerInline__10651 /* fancy server icon shit */
@@ -14,7 +18,7 @@ div[aria-label='Help'],
  /* custom title of the bar */
 div[class='defaultColor__4bd52 lineClamp1__4bd52 text-sm/medium_cf4812'] { font-size: 0 !important; }
 div[class='defaultColor__4bd52 lineClamp1__4bd52 text-sm/medium_cf4812']::after
-{ font-size: 14px; content: 'please remove this discord'; }
+{ font-size: 14px; content: var(--top-text); }
 
 /* HEAD: sidebar.server */
 
@@ -29,8 +33,9 @@ div[aria-label='Create Invite'], /* invite icon on hover */
 div[aria-label='Edit Channel'] /* gear icon on hover */
 { display: none !important; }
 
-a[class='link__2ea32'], /* indiv channel div */
-div[class='link__2ea32'] /* indiv forum/thread div */
+a[class='link__2ea32'], /* indiv channel */
+div[class='link__2ea32'], /* indiv forum/thread */
+.panels_c48ade /* avatar area */
 { border-radius: 0 !important; }
 
 /* NOTE: sidebar.channel.categories */
@@ -84,6 +89,11 @@ button[aria-label='Open GIF picker'],
 button[aria-label='Apps'],
 div.buttons__74017 /* margin at right-most */
 { display: none !important; }
+.channelTextArea_f75fb0.channelTextArea__74017
+{
+	border-radius: 0 !important;
+	margin-bottom: 8px !important;
+}
 
 /* HEAD: sidebar.member */
 
@@ -107,3 +117,21 @@ button[aria-label='Friend']
 /* WARN: end of file */
 
 /* TEST: testing area */
+
+/* "https://samplelib.com/lib/preview/png/sample-boat-400x300.png" */
+
+/* .contents_c19a55 img */
+/* { */
+/* 	background: #ff00ff; */
+/* 	background: url("https://samplelib.com/lib/preview/png/sample-boat-400x300.png"); */
+/* } */
+/* div.contents_c19a55:has(h3 span span[data-text="Toxxic"]) img[src="/assets/9855d7e3b9780976.png"] */
+/* { */
+/* 	visibility: hidden; */
+/* } */
+/* div.contents_c19a55:has(h3 span span[data-text="Toxxic"]) img[src="/assets/9855d7e3b9780976.png"]::after */
+/* { */
+/* 	content: ""; */
+/* 	background: #ff00ff; */
+/* 	display: block; */
+/* } */

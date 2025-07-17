@@ -21,7 +21,7 @@ local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
 local theme = {}
-local font = ge("awmFont") .. ge("awmFontSize")
+local font = ge("awmFont") .. " " .. ge("awmFontSize")
 
 theme.wibarBackground = ge("wibarBackground")
 theme.wibarForeground = ge("wibarForeground")

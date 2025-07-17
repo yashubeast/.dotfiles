@@ -5,9 +5,7 @@
     "themeLinks": [],
     "eagerPatches": false,
     "enabledThemes": [
-        "BasicBackground.theme.css",
         "test.css",
-        "transparent.theme.css",
         "transparent.css"
     ],
     "enableReactDevtools": false,
@@ -556,6 +554,6 @@
         "authenticated": false,
         "url": "https://api.vencord.dev/",
         "settingsSync": false,
-        "settingsSyncVersion": 1752607431035
+        "settingsSyncVersion": 1752696544198
     }
 }

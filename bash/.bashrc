@@ -13,6 +13,7 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias nv='nvim'
 alias e='yazi'
+alias blue='bluetoothctl'
 alias ff="fastfetch --logo small \
 	--structure 'title:os:packages:shell:de:wm:theme:icons:terminal' \
 	--os-format '{name}' \
@@ -126,6 +127,8 @@ nve() {
 		ff) nvim ~/.config/fastfetch/config.jsonc ;;
 		lsd) nvim ~/.config/lsd/config.yaml ;;
 		discord) sudo nvim /opt/discord/resources/build_info.json ;;
+		vencordm) nvim ~/.config/Vencord/themes/test.css ;;
+		vencordt) nvim ~/.config/Vencord/themes/transparent.css ;;
 	esac
 }
 
