@@ -35,25 +35,23 @@
 	n (macro C-b n)
 	p (macro C-b p)
 
-	t (macro C-b t)
-
 	c (macro C-b c)
 	x (macro C-b x)
-	, (macro C-b ,)
+	r (macro C-b ,)
 
-	[ (macro C-b [)
+	v (macro C-b [)
 	/ (macro C-b /)
 
-	left (macro C-b left)
-	down (macro C-b down)
-	up (macro C-b up)
-	right (macro C-b right)
+	h (macro C-b left)
+	j (macro C-b down)
+	k (macro C-b up)
+	l (macro C-b right)
 )
 
 (deflayer tmux
 	_     _ _ _ _ _ _ _ _ _ _ _ _   _
-	_     _ _ _ _ @t _ _ _ _ @p @[ _   _
-	_     @1 @2 @3 @4 @5 @left @down @up @right _ _ _
-	_     _ @x @c _ _ @n _ @, _ @/ _
+	_     _ _ _ @r _ _ _ _ _ @p _ _   _
+	_     @1 @2 @3 @4 @5 @h @j @k @l _ _ _
+	_     _ @x @c @v _ @n _ _ _ @/ _
 	_     _ _ _ _ _
 )

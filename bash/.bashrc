@@ -47,6 +47,8 @@ alias gp='git push'
 
 # tmux stuff
 alias tls='tmux ls'
+alias tk='tmux kill-session -t'
+alias ta='tmux attach'
 alias tau='tmux attach -t uni'
 
 # docker stuff
@@ -106,7 +108,7 @@ nve() {
 		awmt) nvim ~/.config/awesome/core/theme.lua ;;
 		kitty) nvim ~/.config/kitty/kitty.conf ;;
 		kittyt) nvim ~/.config/kitty/kitty.template.conf ;;
-		tmux) nvim ~/.tmux.conf ;;
+		tmux) nvim ~/.config/tmux/tmux.conf ;;
 		yazi) nvim ~/.config/yazi/yazi.toml ;;
 		picom) nvim ~/.config/picom/picom.conf ;;
 		kanata) nvim ~/.config/kanata/config.kbd ;;
