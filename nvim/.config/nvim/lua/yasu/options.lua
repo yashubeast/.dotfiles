@@ -17,6 +17,7 @@ glo.greetings = {
 	' banana ',
 	' music ',
 }
+glo.disabled = ge("disabled")
 
 opt.guifont = ge("nvimFont") .. ":h" .. ge("fontSize")
 glo.have_nerd_font = true

@@ -6,7 +6,12 @@ return {
 	},
   -- event = "BufReadPost",   -- load on first real buffer
   opts = {
-    provider_selector = function() return { "treesitter", "indent" } end,
+    provider_selector = function()
+			if filetype == "markdown" then
+				return { "treesitter" }
+			end
+			return { "treesitter", "indent" }
+		end,
 
     --- Custom fold text ----------------------------------------------------
     fold_virt_text_handler = function(virt_text, lnum, end_lnum, width, truncate)
