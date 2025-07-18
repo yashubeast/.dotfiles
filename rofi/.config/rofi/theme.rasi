@@ -74,3 +74,6 @@ prompt {
 mainbox {
 	children:  [inputbar, listview];
 }
+textbox {
+    text-color: var(secondary);
+}

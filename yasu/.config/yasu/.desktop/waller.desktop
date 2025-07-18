@@ -1,8 +1,7 @@
 [Desktop Entry]
 Type=Application
-Name=themer
-Exec=/home/yasu/.dotfiles/yasu/.config/yasu/theme/run.sh
+Name=waller
+Exec=/home/yasu/.config/yasu/theme/waller.sh
 Icon=preferences-desktop-theme
 Categories=Utility;
 Terminal=false
-

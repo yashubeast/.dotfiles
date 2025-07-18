@@ -1,33 +1,38 @@
 #!/usr/bin/env bash
-#
+
 # rofi‑launcher with:
 #   – drun‑only list
 #   – prefix commands:  y <q> → YouTube search | g <q> → Google search
 #   – terminal wrapping when .desktop has Terminal=true
 
-#################################### paths ####################################
 desktop_dirs=(
 	"$HOME/.local/share/applications"
 	"/usr/share/applications"
+	"$HOME/.config/yasu/.desktop"
 	# "/var/lib/flatpak/exports/share/applications"
 )
 
-################################## app list ###################################
 apps=$(
 	for dir in "${desktop_dirs[@]}"; do
 		grep -h '^Name=' "$dir"/*.desktop 2>/dev/null
 	done | cut -d= -f2 | sort -u
 )
 
-################################ dmenu prompt #################################
 choice=$(printf '%s\n' "$apps" | rofi -dmenu -i -p "")
-
 [ -z "$choice" ] && exit 0
 
-############################## desktop lookup #################################
 desktop=$(
 	for dir in "${desktop_dirs[@]}"; do
-		grep -ril -- "^Name=$choice$" "$dir" 2>/dev/null
+		find "$dir" -name '*.desktop' -exec awk -v name="$choice" '
+			BEGIN{IGNORECASE=1}
+			/^Name=/ {
+				val = substr($0, 6)
+				if (val == name) {
+					print FILENAME
+					exit
+				}
+			}
+		' {} +
 	done | head -n1
 )
 
@@ -36,7 +41,7 @@ url_encode() {
     for (( i=0; i<${#1}; i++ )); do
         c=${1:i:1}
         case "$c" in
-            [a-zA-Z0-9.~_-]) out+="$c" ;;
+            [a-zA-Z0-9.~_/-]) out+="$c" ;;
             ' ')             out+='+'  ;;
             *)  printf -v hex '%02X' "'$c"
                 out+="%$hex" ;;
@@ -56,23 +61,24 @@ case "$desktop" in
   "") # non-app execution
 		case "$choice" in
 
-			# start of configuration
+			# NOTE: start of configuration
 
 			y\ *) open_query_url "y" "https://youtube.com/results?search_query=%s";;
 			g\ *) open_query_url "g" "https://www.google.com/search?q=%s";;
+			gh\ *) open_query_url "gh" "https://github.com/%s";;
 			az\ *) open_query_url "az" "https://www.amazon.com/s/?field-keywords=%s";;
 			aur\ *) open_query_url "aur" "https://aur.archlinux.org/packages?K=%s";;
+			c\ *) expr="${choice#c }"; result=$(qalc -t "$expr" 2>/dev/null); notify-send "$expr = $result"; echo -n "$result" | xclip -selection clipboard ;;
 			*) echo -n "$choice" | xclip -selection clipboard && notify-send "$choice";;
 
-			# end of configuration
+			# NOTE: end of configuration
 
 		esac
 		exit
 		;;
 	*) # .desktop found -> launch application
     terminal=$(grep -m1 '^Terminal=' "$desktop" | cut -d= -f2)
-    cmd=$(grep -m1 '^Exec=' "$desktop" | cut -d= -f2 |
-          sed 's/ *%[fFuUdDnNickvm]//g' | xargs)
+    cmd=$(grep -m1 '^Exec=' "$desktop" | cut -d= -f2 | sed 's/ *%[fFuUdDnNickvm]//g' | xargs)
 
     case "$terminal" in
       true)
