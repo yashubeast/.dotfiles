@@ -1,19 +1,21 @@
 # if not running interactively, don't do anything
 [[ $- != *i* ]] && return
+# source ~/.config/yasu/theme/active.sh
 
 export EDITOR="nvim"
 # export wallDir="/mnt/d/yashu/shit/pix/walls/"
 # export XDG_DATA_DIRS="$HOME/.local/share/applications:/usr/share/applications:$HOME/.config/rofi/apps"
 # export wallpaperDir="/mnt/d/yashu/discord pics/1 piktures/wallpapers/"
-
-source ~/.config/yasu/theme/active.sh
+export LAUNCHER="$HOME/.local/share/applications:/usr/share/applications:$HOME/.config/yasu/.desktop"
+export FILER="$HOME/.dotfiles:$HOME/docs:$(xdg-user-dir DOWNLOAD)"
 
 # aliases
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias nv='nvim'
-alias e='yazi'
+alias xclip='xclip -selection clipboard'
 alias blue='bluetoothctl'
+alias yxev="xev | grep --line-buffered \"keysym\" | awk '{print substr(\$7, 1, length(\$7)-2)}'"
 alias ff="fastfetch --logo small \
 	--structure 'title:os:packages:shell:de:wm:theme:icons:terminal' \
 	--os-format '{name}' \
@@ -35,6 +37,7 @@ alias ff="fastfetch --logo small \
 alias vencord='sh -c "$(curl -sS https://raw.githubusercontent.com/Vendicated/VencordInstaller/main/install.sh)"'
 alias mprev='mpv --loop $(find . -type f -iregex ".*\.\(png\|jpe?g\|gif\|webp\|mp4\|mkv\|webm\|mov\)$" | sort)'
 alias backup='~/.dotfiles/backup.sh'
+alias historyls="history | awk '{\$1=\"\"; print \$0}' | awk '{print \$1}' | sort | uniq -c | sort -nr | head -10"
 
 # git stuff
 alias gs='git status'
@@ -123,7 +126,8 @@ nve() {
 
 		# custom stuff
 		backup) nvim ~/.dotfiles/backup.sh ;;
-		launcher) nvim ~/.config/rofi/scripts/launcher.sh;;
+		launcher) nvim ~/.config/yasu/rofi/launcher.sh ;;
+		filer) nvim ~/.config/yasu/rofi/filer.sh ;;
 
 		# misc
 		ff) nvim ~/.config/fastfetch/config.jsonc ;;
@@ -152,3 +156,12 @@ PROMPT_COMMAND='
     PS1="\[\e[97m\]\w\[\e[38;2;'$rgb'm\]> \[\e[0m\]"
   fi
 '
+eval "$(zoxide init bash)"
+
+function e() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}

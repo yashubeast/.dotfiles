@@ -106,15 +106,21 @@ local globalkeys = gears.table.join(
 
 	awful.key({ modkey }, "r",
 		function()
-			awful.spawn.with_shell("~/.config/rofi/scripts/launcher.sh")
+			awful.spawn.with_shell("$SHELL -i -c '~/.config/yasu/rofi/launcher.sh'")
 		end,
-		{ description = "rofi", group = "launcher" }),
+		{ description = "rofi launcher", group = "launcher" }),
 
-	awful.key({ modkey, "Shift" }, "r",
+	awful.key({ modkey }, "e",
 		function()
-			awful.spawn.with_shell("rofi -show drun")
+			awful.spawn.with_shell("$SHELL -i -c '~/.config/yasu/rofi/filer.sh'")
 		end,
-		{ description = "rofi drun", group = "launcher" })
+		{ description = "rofi launcher", group = "launcher" })
+
+	-- awful.key({ modkey, "Shift" }, "r",
+	-- 	function()
+	-- 		awful.spawn.with_shell("rofi -show drun")
+	-- 	end,
+	-- 	{ description = "rofi drun", group = "launcher" })
 )
 
 local keysforworkspaces = { 'a', 's', 'd', 'f', 'g' }

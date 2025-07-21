@@ -3,6 +3,20 @@ local beautiful = require("beautiful")
 local keysClient = require("bindings.keys").client
 
 awful.rules.rules = {
+
+	{
+		rule = { class = "Dragon-drop" },
+		properties = {
+			floating = true,
+			ontop = true,
+			skip_taskbar = true,
+			titlebars_enabled = false
+		},
+		callback = function(c)
+			awful.placement.centered(c, { honor_workarea = true, honor_padding = true })
+		end
+	},
+
 	{ rule = { },
 		properties = {
 			border_width = beautiful.border_width,

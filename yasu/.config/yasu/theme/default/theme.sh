@@ -1,6 +1,6 @@
 export terminal="kitty"
 export editor=$EDITOR
-export wallDir="/mnt/d/yashu/shit/pix/walls/"
+export wallDir="$HOME/d/shit/pix/walls/"
 
 export font="JetBrains Mono"
 export fontNerd="JetBrainsMono Nerd Font"
@@ -47,7 +47,7 @@ export wibarCharging="$lime"
 
 # nvim
 export nvimFont=$fontNerd
-export obsidian_path='/mnt/d/yashu/apps/obsidian/obsidian-vault/'
+export obsidian_path="$HOME/d/apps/obsidian/obsidian-vault/"
 
 # kitty
 export kittyGeneration=1 # boolean to generate kitty conf or not
