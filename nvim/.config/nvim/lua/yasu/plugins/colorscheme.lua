@@ -53,6 +53,35 @@ return {
 	},
 
 	{
+		'dylanaraps/wal.vim',
+		name = "pywal",
+		priority = 1001,
+		lazy = false,
+		enabled = true,
+		config = function()
+			vim.opt.termguicolors = true
+			vim.cmd.colorscheme("wal")
+
+			local transparent_groups = {
+				"Normal",
+				"NormalNC",
+				"NormalFloat",
+				"FloatBorder",
+				"SignColumn",
+				"VertSplit",
+				"StatusLine",
+				"StatusLineNC",
+				"LineNr",
+				"Folded",
+				"EndOfBuffer",
+			}
+			for _, group in ipairs(transparent_groups) do
+				vim.api.nvim_set_hl(0, group, { bg = "none", ctermbg = "none" })
+			end
+		end,
+	},
+
+	{
 		'nvim-lualine/lualine.nvim',
 		lazy = false,
 		dependencies = {
@@ -61,7 +90,7 @@ return {
 		config = function()
 			require('lualine').setup({
 				options = {
-					theme = "catppuccin",
+					theme = "auto",
 					icons_enabled = true,
 					-- section_separators = { left = "", right = "" },
 					section_separators = '',

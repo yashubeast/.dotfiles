@@ -24,7 +24,6 @@ if [[ "$ans" =~ ^[Yy]$ ]]; then
 	fi
 fi
 
-
 read -p "auto-mounts via fstab ? [y/N] " mount_ans
 if [[ "$mount_ans" =~ ^[Yy]$ ]]; then
 	lsblk -f

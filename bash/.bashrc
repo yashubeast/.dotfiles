@@ -7,9 +7,10 @@ export EDITOR="nvim"
 # export XDG_DATA_DIRS="$HOME/.local/share/applications:/usr/share/applications:$HOME/.config/rofi/apps"
 # export wallpaperDir="/mnt/d/yashu/discord pics/1 piktures/wallpapers/"
 export LAUNCHER="$HOME/.local/share/applications:/usr/share/applications:$HOME/.config/yasu/.desktop"
-export FILER="$HOME/.dotfiles:$HOME/docs:$(xdg-user-dir DOWNLOAD)"
+export FILER="$HOME/.dotfiles:$HOME/d/docs:$(xdg-user-dir DOWNLOAD)"
 
 # aliases
+alias c='clear'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias nv='nvim'
@@ -99,7 +100,7 @@ pj() {
 		vencord) cd ~/.config/Vencord;;
 		# misc
 		d) cd /mnt/d ;;
-		obs) cd /mnt/d/yashu/apps/obsidian/obsidian-vault/ ;;
+		obs) cd $HOME/d/apps/obsidian/obsidian-vault/ ;;
 	esac
 }
 
@@ -119,7 +120,7 @@ nve() {
 		mpv) nvim ~/.config/mpv/input.conf;;
 
 		# yasu/theme
-		themer) nvim ~/.config/yasu/theme/run.sh ;;
+		themer) nvim ~/.config/yasu/theme/themer.sh ;;
 		themew) nvim ~/.config/yasu/theme/waller.sh ;;
 		themea) nvim ~/.config/yasu/theme/active.sh ;;
 		themed) nvim ~/.config/yasu/theme/default/theme.sh ;;
@@ -138,6 +139,7 @@ nve() {
 	esac
 }
 
+# prompt
 hex_to_rgb() {
     hex="${1#"#"}"
     r=$((16#${hex:0:2}))
@@ -146,18 +148,21 @@ hex_to_rgb() {
     echo "$r;$g;$b"
 }
 rgb=$(hex_to_rgb "$primary")
-
-# prompt
 # PS1='\[\e[0m\]\w\[\e[38;2;'"$rgb"'m\]> \[\e[0m\]'
 PROMPT_COMMAND='
   if [[ "$PWD" == "$HOME" ]]; then
     PS1="\[\e[38;2;'$rgb'm\]~> \[\e[0m\]"
   else
     PS1="\[\e[97m\]\w\[\e[38;2;'$rgb'm\]> \[\e[0m\]"
-  fi
-'
+  fi'
+
+# path
+export PATH="$HOME/.config/yasu:$PATH"
+
+# zoxide
 eval "$(zoxide init bash)"
 
+# yazi auto-cd
 function e() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"

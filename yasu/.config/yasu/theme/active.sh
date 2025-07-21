@@ -1,6 +1,6 @@
 source "/home/yasu/.dotfiles/yasu/.config/yasu/theme/default/theme.sh"
 source "/home/yasu/.dotfiles/yasu/.config/yasu/theme/default/theme.sh"
-export wallFile="a_black_and_white_drawing_of_a_person_holding_a_stick.jpg"
+export wallFile="bby9mjvbr41a1.webp"
 
 ################################################################################
 # kitty config generation, only active when kittyGeneration=1

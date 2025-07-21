@@ -21,3 +21,4 @@ print_side_by_side_table() {
 }
 
 print_side_by_side_table
+rm aur.pkgs.old repo.pkgs.old

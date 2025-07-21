@@ -1,9 +1,11 @@
+@import "~/.cache/wal/colors-rofi-dark.rasi"
 * {
 	background-color:            transparent;
-	background:                  {{rofiBackground}};
-	primary:                     {{rofiPrimary}};
-	secondary:                   {{rofiSecondary}};
-	disabled:                    {{rofiDisabled}};
+	background:                  transparent;
+	// background:                  {{rofiBackground}};
+	// primary:                     {{rofiPrimary}};
+	// secondary:                   {{rofiSecondary}};
+// 	disabled:                    {{rofiDisabled}};
 }
 element {
 	padding: 0px ;
@@ -13,15 +15,16 @@ element {
 	orientation: horizontal;
 	children: [element-text];
 }
-element normal.normal {
-	text-color:       var(secondary);
-}
+// element normal.normal {
+// 	text-color:       var(secondary);
+// }
 element selected.normal {
-	text-color:       var(primary);
+	// background-color: transparent;
+	text-color:       inherit;
 }
-element alternate.normal {
-	text-color:       var(secondary);
-}
+// element alternate.normal {
+// 	text-color:       var(secondary);
+// }
 element-text {
 	background-color: inherit;
 	text-color:       inherit;
@@ -33,9 +36,9 @@ window {
 	y-offset:         -200;
 	width:            40ch;
 	padding:          10;
-	background-color: var(background);
+	// background-color: var(background);
 	border:           1;
-	border-color:     var(primary);
+	// border-color:     var(primary);
 }
 listview {
 	lines: 10;
@@ -44,36 +47,36 @@ listview {
 }
 num-filtered-rows {
 	expand:     false;
-	text-color: var(disabled);
+	// text-color: var(disabled);
 }
 num-rows {
 	expand:     false;
-	text-color: var(disabled);
+	// text-color: var(disabled);
 }
 textbox-num-sep {
 	expand:     false;
 	str:        "/";
-	text-color: var(disabled);
+	// text-color: var(disabled);
 }
 inputbar {
 	padding:    0px ;
 	spacing:    0px ;
-	text-color: var(secondary);
+	// text-color: var(secondary);
 	// children:   ["prompt","entry","num-filtered-rows","textbox-num-sep","num-rows"];
 	children:   ["entry"];
 }
 entry {
-	text-color:        var(secondary);
+	// text-color:        var(secondary);
 	spacing:           0;
 	horizontal-align:  0.5;
 }
 prompt {
 	spacing:    0;
-	text-color: var(secondary);
+	// text-color: var(secondary);
 }
 mainbox {
 	children:  [inputbar, listview];
 }
-textbox {
-    text-color: var(secondary);
-}
+// textbox {
+//     text-color: var(secondary);
+// }

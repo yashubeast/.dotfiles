@@ -23,4 +23,5 @@ fi
 
 sed -i "3s|.*|export wallFile=\"$wallpaper\"|" "$WDIR/active.sh"
 feh --bg-fill "$wallDir$wallpaper"
+wal -i "$wallDir$wallpaper"
 notify-send "walled: $wallpaper"
