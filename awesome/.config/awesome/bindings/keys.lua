@@ -23,6 +23,10 @@ local globalkeys = gears.table.join(
 		mywibar.bluetooth()
 	end, { description = "refresh wibox widgets", group = "awesome" }),
 
+	-- awful.key({ modkey }, "v", function()
+	-- 	awful.spawn.with_shell("~/.config/yasu/poly")
+	-- end, { description = "decrease by 5%", group = "audio" }),
+
 	awful.key({}, "XF86AudioLowerVolume", function()
 		awful.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-", false)
 		awesome.emit_signal("volume::update")
@@ -106,13 +110,13 @@ local globalkeys = gears.table.join(
 
 	awful.key({ modkey }, "r",
 		function()
-			awful.spawn.with_shell("$SHELL -i -c '~/.config/yasu/rofi/launcher.sh'")
+			awful.spawn.with_shell("launcher")
 		end,
 		{ description = "rofi launcher", group = "launcher" }),
 
 	awful.key({ modkey }, "e",
 		function()
-			awful.spawn.with_shell("$SHELL -i -c '~/.config/yasu/rofi/filer.sh'")
+			awful.spawn.with_shell("filer")
 		end,
 		{ description = "rofi launcher", group = "launcher" })
 

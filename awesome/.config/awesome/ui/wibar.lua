@@ -183,10 +183,10 @@ local bluetooth_widget = boxed_widget(bluetooth_widget_raw)
 -- Screen setup -----------------------------------------------------
 ---------------------------------------------------------------------
 
-screen.connect_signal("property::geometry", set_wallpaper)
+-- screen.connect_signal("property::geometry", set_wallpaper)
 
 awful.screen.connect_for_each_screen(function(s)
-	set_wallpaper(s)
+	-- set_wallpaper(s)
 
 	-- Tags ---------------------------------------------------------
 	awful.tag({ "1", "2", "3", "4", "5" }, s, awful.layout.layouts[1])

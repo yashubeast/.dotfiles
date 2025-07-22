@@ -1,38 +1,15 @@
 # if not running interactively, don't do anything
 [[ $- != *i* ]] && return
-# source ~/.config/yasu/theme/active.sh
-
-export EDITOR="nvim"
-# export wallDir="/mnt/d/yashu/shit/pix/walls/"
-# export XDG_DATA_DIRS="$HOME/.local/share/applications:/usr/share/applications:$HOME/.config/rofi/apps"
-# export wallpaperDir="/mnt/d/yashu/discord pics/1 piktures/wallpapers/"
-export LAUNCHER="$HOME/.local/share/applications:/usr/share/applications:$HOME/.config/yasu/.desktop"
-export FILER="$HOME/.dotfiles:$HOME/d/docs:$(xdg-user-dir DOWNLOAD)"
 
 # aliases
 alias c='clear'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-alias nv='nvim'
+alias v='nvim'
 alias xclip='xclip -selection clipboard'
 alias blue='bluetoothctl'
 alias yxev="xev | grep --line-buffered \"keysym\" | awk '{print substr(\$7, 1, length(\$7)-2)}'"
-alias ff="fastfetch --logo small \
-	--structure 'title:os:packages:shell:de:wm:theme:icons:terminal' \
-	--os-format '{name}' \
-	--packages-format '{2}' \
-	--shell-format '{3}' \
-	--wm-format '{2}' \
-	--terminal-format '{2}' \
-	--color-keys '$primary' \
-	--color-title '$primary' \
-	--logo-color-1 '$primary' \
-	--logo-color-2 '$primary' \
-	--logo-color-3 '$primary' \
-	--logo-color-4 '$primary' \
-	--logo-color-5 '$primary' \
-	--logo-color-6 '$primary' \
-	"
+alias mkcd='f() { mkdir -p "$1" && cd "$1"; }; f'
 
 # setup stuff
 alias vencord='sh -c "$(curl -sS https://raw.githubusercontent.com/Vendicated/VencordInstaller/main/install.sh)"'
@@ -85,7 +62,8 @@ alias hibernate='sudo systemctl hibernate'
 
 # sudo shit
 alias pacman='sudo pacman'
-alias sysctl='sudo systemctl'
+alias sc='sudo systemctl'
+alias scu='systemctl --user'
 
 # functions
 pj() {
@@ -108,6 +86,7 @@ nve() {
 	case "$1" in
 		# configs
 		bash) nvim ~/.bashrc ;;
+		bashp) nvim ~/.bash_profile ;;
 		awm) nvim ~/.config/awesome/rc.lua ;;
 		awmt) nvim ~/.config/awesome/core/theme.lua ;;
 		kitty) nvim ~/.config/kitty/kitty.conf ;;
@@ -118,17 +97,18 @@ nve() {
 		kanata) nvim ~/.config/kanata/config.kbd ;;
 		rofi) nvim ~/.config/rofi/config.rasi ;;
 		mpv) nvim ~/.config/mpv/input.conf;;
+		sxhkd) nvim ~/.config/sxhkd/sxhkdrc;;
 
 		# yasu/theme
 		themer) nvim ~/.config/yasu/theme/themer.sh ;;
-		themew) nvim ~/.config/yasu/theme/waller.sh ;;
+		waller) nvim ~/.config/yasu/waller ;;
 		themea) nvim ~/.config/yasu/theme/active.sh ;;
 		themed) nvim ~/.config/yasu/theme/default/theme.sh ;;
 
 		# custom stuff
 		backup) nvim ~/.dotfiles/backup.sh ;;
-		launcher) nvim ~/.config/yasu/rofi/launcher.sh ;;
-		filer) nvim ~/.config/yasu/rofi/filer.sh ;;
+		launcher) nvim ~/.config/yasu/launcher ;;
+		filer) nvim ~/.config/yasu/filer ;;
 
 		# misc
 		ff) nvim ~/.config/fastfetch/config.jsonc ;;
@@ -139,25 +119,28 @@ nve() {
 	esac
 }
 
-# prompt
-hex_to_rgb() {
-    hex="${1#"#"}"
+# PS1='\[\e[0m\]\w\[\e[38;2;'"$rgb"'m\]> \[\e[0m\]'
+get_rgb() {
+    local hex=$(xrdb -query | awk '/\*color4:/ {print $2}')
+    hex="${hex#"#"}"
     r=$((16#${hex:0:2}))
     g=$((16#${hex:2:2}))
     b=$((16#${hex:4:2}))
     echo "$r;$g;$b"
 }
-rgb=$(hex_to_rgb "$primary")
-# PS1='\[\e[0m\]\w\[\e[38;2;'"$rgb"'m\]> \[\e[0m\]'
-PROMPT_COMMAND='
-  if [[ "$PWD" == "$HOME" ]]; then
-    PS1="\[\e[38;2;'$rgb'm\]~> \[\e[0m\]"
+set_prompt() {
+  if [[ -z "$DISPLAY" || $(tput colors) -lt 8 ]]; then
+		PS1='\[\e[0m\]\w\[\e[38;2;'"$rgb"'m\]> \[\e[0m\]'
   else
-    PS1="\[\e[97m\]\w\[\e[38;2;'$rgb'm\]> \[\e[0m\]"
-  fi'
-
-# path
-export PATH="$HOME/.config/yasu:$PATH"
+    rgb=$(get_rgb)
+    if [[ "$PWD" == "$HOME" ]]; then
+      PS1="\[\e[38;2;${rgb}m\]~> \[\e[0m\]"
+    else
+      PS1="\[\e[97m\]\w\[\e[38;2;${rgb}m\]> \[\e[0m\]"
+    fi
+  fi
+}
+PROMPT_COMMAND='set_prompt'
 
 # zoxide
 eval "$(zoxide init bash)"
@@ -170,3 +153,5 @@ function e() {
 	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
 	rm -f -- "$tmp"
 }
+
+source ~/.cache/wal/colors-tty.sh

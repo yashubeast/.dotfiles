@@ -12,8 +12,8 @@ end
 
 local naughty = require("naughty")
 -- local theme_assets = require("beautiful.theme_assets")
--- local gfs = require("gears.filesystem")
--- local gears = require("gears")
+local gfs = require("gears.filesystem")
+local gears = require("gears")
 -- local themedir = gfs.get_themes_dir()
 -- local valPath = gfs.get_configuration_dir()
 
@@ -43,6 +43,7 @@ theme.lime = ge("lime")
 
 theme.charging = ge("wibarCharging")
 
+-- theme.wallpaper = os.getenv("HOME") .. "/.cache/wal/wal"
 theme.wallpaper = ge("wallDir") .. ge("wallFile")
 -- naughty.notify({ text = ge("wallpaperDir") })
 

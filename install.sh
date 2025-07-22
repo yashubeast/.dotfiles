@@ -35,3 +35,21 @@ if [[ "$mount_ans" =~ ^[Yy]$ ]]; then
 	echo "UUID=$uuid $mount_point $fs_type defaults,noatime,uid=1000,gid=1000,umask=022 0 0" | sudo tee -a /etc/fstab
 	echo "drive added to /etc/fstab"
 fi
+
+read -p "stow + enable user services ? [y/N] " ans
+if [[ "$ans" =~ ^[Yy]$ ]]; then
+	stow -d ~/.dotfiles/services -t ~
+
+	for service in ~/.config/systemd/user/*.service; do
+		svc=$(basename "$service")
+		systemctl --user enable "$svc"
+	done
+
+	read -p "start services now ? [y/N] " start_ans
+	if [[ "$start_ans" =~ ^[Yy]$ ]]; then
+		for service in ~/.config/systemd/user/*.service; do
+			svc=$(basename "$service")
+			systemctl --user start "$svc"
+		done
+	fi
+fi
