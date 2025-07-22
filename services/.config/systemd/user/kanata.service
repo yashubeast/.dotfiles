@@ -1,0 +1,9 @@
+[Unit]
+Description=kanata key remapper
+
+[Service]
+ExecStart=/usr/bin/kanata --cfg %h/.config/kanata/config.kbd
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

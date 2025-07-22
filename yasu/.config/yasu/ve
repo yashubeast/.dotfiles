@@ -1,0 +1,14 @@
+#!/bin/bash
+
+source ~/.bash_profile
+# IFS=':' read -ra search_dirs <<< "$VE"
+
+files=$(find "$VE" \( -name .git -type d -prune \) -o -type f -print 2>/dev/null)
+
+if [[ $# -gt 0 ]]; then
+	selected=$(printf '%s\n' "$files" | fzf --query="$*" --select-1 --exit-0)
+else
+	selected=$(printf '%s\n' "$files" | fzf)
+fi
+
+[ -n "$selected" ] && ${EDITOR:-nvim} "$selected"

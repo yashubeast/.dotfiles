@@ -1,0 +1,8 @@
+# modifier aliases
+alt = mod1
+
+alt + w
+	kitty
+
+alt + q
+	launcher

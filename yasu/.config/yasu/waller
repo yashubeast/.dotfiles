@@ -1,0 +1,21 @@
+#!/bin/bash
+
+source ~/.bashrc
+prevWall=$(cat ~/.cache/wal/wal)
+
+files=($(find "$WALLDIR" -type f -printf '%f\n' | sort))
+
+wallpaper=$(
+	printf "%s\n" "${files[@]}" | \
+	rofi -dmenu \
+	-on-selection-changed "feh --bg-fill '$WALLDIR{entry}'")
+
+if [ -z "$wallpaper" ]; then
+	feh --bg-fill "$prevWall"
+	exit 0
+fi
+
+feh --bg-fill "$WALLDIR$wallpaper"
+wal -i "$WALLDIR$wallpaper" -n
+xrdb -merge ~/.Xresources
+notify-send "walled: $wallpaper"

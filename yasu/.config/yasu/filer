@@ -1,0 +1,26 @@
+#!/bin/bash
+
+source ~./bash_profile
+
+IFS=':' read -ra dirs <<< "$FILER"
+# IFS=':' read -ra dirs_noDepth <<< "$FILER_NODEPTH"
+
+entries=$(
+	{
+		# find -L "${dirs[@]}" -type f -printf "%T@\t%p\n"
+		find -L "${dirs[@]}" \( -name .git -type d -prune \) -o -type f -printf "%T@\t%p\n"
+		# find -L "${dirs_noDepth[@]}" -type f -printf "%T@\t%p\n"
+	} |
+	sort -nr |
+	cut -f2)
+	# rofi -dmenu -i) || exit 1
+
+max_len=$(printf "%s\n" "$entries" | awk '{ print length }' | sort -nr | head -n1)
+width=$(( max_len * 7 ))
+
+recent_file=$(printf "%s\n" "$entries" | rofi -dmenu -i -theme-str "window { width: ${width}px; }") || exit 1
+
+if [ -n "$recent_file" ]; then
+	GTK_THEME=Adwaita:dark \
+	dragon-drop -a -x -T -I <<< "$recent_file"
+fi
