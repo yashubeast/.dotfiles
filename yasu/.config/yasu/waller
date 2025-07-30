@@ -3,11 +3,14 @@
 source ~/.bashrc
 prevWall=$(cat ~/.cache/wal/wal)
 
-files=($(find "$WALLDIR" -type f -printf '%f\n' | sort))
+files=($(find "$WALLDIR" -type f -printf '%P\n' | sort))
+
+max_len=$(printf "%s\n" "${files[@]}" | awk '{ print length }' | sort -nr | head -n1)
+width=$(( max_len * 7 ))
 
 wallpaper=$(
 	printf "%s\n" "${files[@]}" | \
-	rofi -dmenu \
+	rofi -dmenu -i -theme-str "window { width: ${width}px; }" \
 	-on-selection-changed "feh --bg-fill '$WALLDIR{entry}'")
 
 if [ -z "$wallpaper" ]; then

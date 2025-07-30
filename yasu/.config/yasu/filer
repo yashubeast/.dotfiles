@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ~./bash_profile
+source ~/.bash_profile
 
 IFS=':' read -ra dirs <<< "$FILER"
 # IFS=':' read -ra dirs_noDepth <<< "$FILER_NODEPTH"

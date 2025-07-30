@@ -9,11 +9,11 @@ alias v='nvim'
 alias xclip='xclip -selection clipboard'
 alias blue='bluetoothctl'
 alias yxev="xev | grep --line-buffered \"keysym\" | awk '{print substr(\$7, 1, length(\$7)-2)}'"
+alias ff='fastfetch'
 alias mkcd='f() { mkdir -p "$1" && cd "$1"; }; f'
 
 # setup stuff
 alias vencord='sh -c "$(curl -sS https://raw.githubusercontent.com/Vendicated/VencordInstaller/main/install.sh)"'
-alias mprev='mpv --loop $(find . -type f -iregex ".*\.\(png\|jpe?g\|gif\|webp\|mp4\|mkv\|webm\|mov\)$" | sort)'
 alias backup='~/.dotfiles/backup.sh'
 alias historyls="history | awk '{\$1=\"\"; print \$0}' | awk '{print \$1}' | sort | uniq -c | sort -nr | head -10"
 
@@ -134,9 +134,9 @@ set_prompt() {
   else
     rgb=$(get_rgb)
     if [[ "$PWD" == "$HOME" ]]; then
-      PS1="\[\e[38;2;${rgb}m\]~> \[\e[0m\]"
+      PS1="\[\e[38;2;${rgb}m\]❯ \[\e[0m\]"
     else
-      PS1="\[\e[97m\]\w\[\e[38;2;${rgb}m\]> \[\e[0m\]"
+      PS1="\[\e[97m\]\w\[\e[38;2;${rgb}m\]❯ \[\e[0m\]"
     fi
   fi
 }

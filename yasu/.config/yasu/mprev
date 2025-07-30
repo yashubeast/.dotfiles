@@ -1,0 +1,3 @@
+#!/bin/bash
+
+mpv --loop $(find . -type f -iregex ".*\.\(png\|jpe?g\|gif\|webp\|mp4\|mkv\|webm\|mov\)$" | sort)

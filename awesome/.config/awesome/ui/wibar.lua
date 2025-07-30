@@ -86,7 +86,7 @@ local function update_wifi()
 				wifi_widget_raw.markup = "󰤨 " .. ssid
 				wifi_widget.bg = boxed_widget_primary
 			else
-				wifi_widget_raw.markup = "󰤯 "
+				wifi_widget_raw.markup = "󰤯"
 				wifi_widget.bg = beautiful.alert
 			end
 		end
